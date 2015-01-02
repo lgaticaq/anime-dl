@@ -1,6 +1,6 @@
 {
   "name": "anime-dl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for show anime whit subs in spanish.",
   "main": "lib",
   "dependencies": {
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/leonciokof/anime-dl",
   "bin": {
-    "anime-dl": "lib"
+    "anime-dl": "lib/index.js"
   },
   "preferGlobal": true
 }
