@@ -1,0 +1,43 @@
+{
+  "name": "anime-dl",
+  "version": "1.0.0",
+  "description": "CLI for show anime whit subs in spanish.",
+  "main": "lib",
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "inquirer": "^0.8.0",
+    "lodash": "^2.4.1",
+    "urllib": "^2.2.1"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "gulp": "^3.8.10",
+    "gulp-bump": "^0.1.11",
+    "gulp-coffee": "^2.2.0",
+    "gulp-coffeelint": "^0.4.0",
+    "gulp-filter": "^2.0.0",
+    "gulp-git": "^0.5.5",
+    "gulp-header": "^1.2.2",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-tag-version": "^1.2.1",
+    "gulp-util": "^3.0.1",
+    "run-sequence": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leonciokof/anime-dl.git"
+  },
+  "author": "Leonardo Gatica <lgaticastyle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leonciokof/anime-dl/issues"
+  },
+  "homepage": "https://github.com/leonciokof/anime-dl",
+  "bin": {
+    "anime-dl": "lib"
+  },
+  "preferGlobal": true
+}
