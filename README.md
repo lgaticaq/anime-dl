@@ -3,6 +3,11 @@ anime-dl
 
 CLI for show anime whit subs in spanish.
 
+Requirements
+------------
+
+- [mpv](http://mpv.io/installation/)
+
 Install
 -------
 
@@ -10,7 +15,7 @@ Install
 [sudo] npm i -g anime-dl
 ```
 
-Use
+Usage
 ---
 
 ``` bash
