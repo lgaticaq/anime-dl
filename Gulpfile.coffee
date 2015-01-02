@@ -24,11 +24,11 @@ gulp.task "build", (cb) ->
 
 inc = (importance) ->
   gulp.src("./package.json")
-    .pipe(bump(type: importance))
+    .pipe(plugins.bump(type: importance))
     .pipe(gulp.dest("./"))
-    .pipe(git.commit("bumps package version"))
-    .pipe(filter("package.json"))
-    .pipe(tag_version())
+    .pipe(plugins.git.commit("bumps package version"))
+    .pipe(plugins.filter("package.json"))
+    .pipe(plugins.tagVersion())
 
 gulp.task "patch", ->
   inc("patch")
