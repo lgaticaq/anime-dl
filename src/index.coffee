@@ -1,11 +1,12 @@
 "use strict"
 
-spawn = require("child_process").spawn
+proc = require "child_process"
 urllib = require "urllib"
 cheerio = require "cheerio"
 _ = require "lodash"
 inquirer = require "inquirer"
 url = "http://jkanime.net/"
+MPV_EXEC = "mpv --really-quiet --loop=no "
 
 searchAnime = (search, cb) ->
   urllib.request "#{url}buscar/#{search}",
@@ -57,7 +58,5 @@ inquirer.prompt options, (answer) ->
         default: "1"
       inquirer.prompt options, (answer) ->
         getUrlVideo animeUrl, answer.chapter, (err, url) ->
-          prc = spawn("mpv",  [url])
-          console.log "mpv #{url}"
-          prc.on "close", (code) ->
-            console.log "process exit code #{code}"
+          console.log "#{MPV_EXEC} #{url}"
+          proc.exec "#{MPV_EXEC} #{url}"
