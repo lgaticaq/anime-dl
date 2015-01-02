@@ -1,6 +1,6 @@
 {
   "name": "anime-dl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI for show anime whit subs in spanish.",
   "main": "lib",
   "dependencies": {
