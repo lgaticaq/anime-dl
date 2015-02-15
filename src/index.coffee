@@ -22,6 +22,7 @@ yargs = require("yargs")
   .alias("k", "mpv").describe("k", "Autoplay in mpv (default)").boolean("k")
   .alias("m", "mplayer").describe("m", "Autoplay in mplayer").boolean("m")
   .alias("o", "omx").describe("o", "Autoplay in omxplayer").boolean("o")
+  .alias("f", "file").describe("f", "Download to file")
   .version(version, "version").alias("version", "V")
   .help("help").alias("help", "h")
 
@@ -75,6 +76,20 @@ runPlayer = (url, player) ->
     detached: true
     stdio: "ignore"
 
+download = (url, file) ->
+  console.log "INFO"
+  console.log "full title: #{ANIME.title}"
+  console.log "title: #{ANIME.codeName}"
+  console.log "chapter: #{ANIME.chapter}"
+  console.log "url: #{url}\n\n"
+  console.log "For download next chapter: #{yargs.argv["$0"]} -t " +
+    "#{ANIME.codeName} -c #{ANIME.chapter + 1} -f #{ANIME.codeName}_" +
+    "#{ANIME.chapter + 1}.mp4"
+  file = "#{ANIME.codeName}_#{ANIME.chapter}.mp4" if file is true
+  spawn "wget", [url, "-O", file],
+    detached: true
+    stdio: "ignore"
+
 if yargs.argv.t and yargs.argv.c
   animeUrl = "#{url}#{yargs.argv.title}/"
   player = "mpv"
@@ -83,7 +98,14 @@ if yargs.argv.t and yargs.argv.c
   player = "vlc" if yargs.argv.v
   player = "omxplayer" if yargs.argv.o
   getUrlVideo animeUrl, yargs.argv.chapter, (err, url) ->
-    runPlayer url, player
+    if err
+      console.log "An error has occurred :("
+      exit
+    if yargs.argv.file
+      file = yargs.argv.file
+      download url, file
+    else
+      runPlayer url, player
 else
   options =
     type: "input"
