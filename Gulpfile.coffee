@@ -37,6 +37,9 @@ gulp.task "commit", ->
   gulp.src("./*")
     .pipe(plugins.git.commit(yargs.argv.m, args: "--amend"))
 
+gulp.task "tag", ->
+  gulp.src(["./package.json"]).pipe(plugins.tagVersion())
+
 gulp.task "push-tags", ->
   plugins.git.push "origin", "master", args: "--tags", (err) ->
     throw err if err
