@@ -100,7 +100,7 @@ if yargs.argv.t and yargs.argv.c
   getUrlVideo animeUrl, yargs.argv.chapter, (err, url) ->
     if err
       console.log "An error has occurred :("
-      exit
+      process.exit 1
     if yargs.argv.file
       file = yargs.argv.file
       download url, file

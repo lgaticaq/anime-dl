@@ -3,7 +3,7 @@ anime-dl
 
 [![npm version](https://badge.fury.io/js/anime-dl.svg)](http://badge.fury.io/js/anime-dl)
 
-CLI for show anime whit subs in spanish.
+CLI for show and download anime from jkanime.net.
 
 Requirements
 ------------
@@ -22,7 +22,8 @@ Install
 [sudo] npm i -g anime-dl
 ```
 
-Only GNU/Linux for the moment. Default player is mpv
+Tested in GNU/Linux and OSX.
+Default player is mpv.
 
 Usage
 -----

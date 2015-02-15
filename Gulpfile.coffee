@@ -2,7 +2,6 @@
 
 gulp = require "gulp"
 plugins = require("gulp-load-plugins")()
-runSequence = require "run-sequence"
 yargs = require("yargs")
   .alias("m", "message")
 
@@ -36,6 +35,9 @@ gulp.task "release", ->
 gulp.task "commit", ->
   gulp.src("./*")
     .pipe(plugins.git.commit(yargs.argv.m, args: "--amend"))
+
+gulp.task "tag", ->
+  gulp.src(["./package.json"]).pipe(plugins.tagVersion())
 
 gulp.task "push-tags", ->
   plugins.git.push "origin", "master", args: "--tags", (err) ->
