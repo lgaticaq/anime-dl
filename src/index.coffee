@@ -56,7 +56,7 @@ getUrlVideo = (animeUrl, chapter, cb) ->
       ANIME.codeName = animeUrl.replace(url, "").replace("/", "")
       ANIME.chapter = parseInt chapter, 10
       try
-        value = $(".player_conte param")[19].attribs.value
+        value = $(".player_conte param[value^=file]")[0].attribs.value
         url = value.split("file=")[1].split("/&provider")[0]
       catch err
         url = null
