@@ -1,5 +1,6 @@
 "use strict"
 
+spawn = require("child_process").spawn
 gulp = require "gulp"
 plugins = require("gulp-load-plugins")()
 yargs = require("yargs")
@@ -23,13 +24,13 @@ inc = (importance) ->
     .pipe(plugins.bump(type: importance))
     .pipe(gulp.dest("./"))
 
-gulp.task "patch", ->
+gulp.task "patch", ["build"], ->
   inc("patch")
 
-gulp.task "feature", ->
+gulp.task "feature", ["build"], ->
   inc("minor")
 
-gulp.task "release", ->
+gulp.task "release", ["build"], ->
   inc("major")
 
 gulp.task "commit", ->
@@ -39,10 +40,11 @@ gulp.task "commit", ->
 gulp.task "tag", ->
   gulp.src(["./package.json"]).pipe(plugins.tagVersion())
 
-gulp.task "push-tags", ->
+gulp.task "push", ->
   plugins.git.push "origin", "master", args: "--tags", (err) ->
     throw err if err
 
-gulp.task "push", ->
-  plugins.git.push "origin", "master", (err) ->
-    throw err if err
+gulp.task "publish", (done) ->
+  spawn "npm", ["publish"],
+    stdio: "inherit"
+  .on "close", done
