@@ -1,5 +1,6 @@
 "use strict"
 
+spawn = require("child_process").spawn
 gulp = require "gulp"
 plugins = require("gulp-load-plugins")()
 yargs = require("yargs")
@@ -46,3 +47,8 @@ gulp.task "push-tags", ->
 gulp.task "push", ->
   plugins.git.push "origin", "master", (err) ->
     throw err if err
+
+gulp.task "publish", (done) ->
+  spawn "npm", ["publish"],
+    stdio: "inherit"
+  .on "close", done
