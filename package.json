@@ -1,6 +1,6 @@
 {
   "name": "anime-dl",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "CLI for show and download anime from jkanime.net.",
   "main": "lib",
   "dependencies": {
