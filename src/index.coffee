@@ -54,8 +54,7 @@ getUrlVideo = (animeUrl, cb) ->
     if not err and response.statusCode is 200
       $ = cheerio.load data.toString()
       ANIME.title = $(".vervideo").text().split(" - ")[0]
-      ANIME.codeName = animeUrl.replace(url, "").replace("/", "")
-      ANIME.chapter = parseInt chapter, 10
+      [ANIME.codeName, ANIME.chapter] = animeUrl.replace(url, "").split "/"
       try
         links = $(".player_conte param[value^=file]")
         value = links[links.length - 1].attribs.value
@@ -71,9 +70,7 @@ runPlayer = (url, player) ->
   console.log "full title: #{ANIME.title}"
   console.log "title: #{ANIME.codeName}"
   console.log "chapter: #{ANIME.chapter}"
-  console.log "url: #{url}\n\n"
-  console.log "For see next chapter: #{yargs.argv["$0"]} -t " +
-    "#{ANIME.codeName} -c #{ANIME.chapter + 1}"
+  console.log "url: #{url}"
   spawn player, [url],
     detached: true
     stdio: "ignore"

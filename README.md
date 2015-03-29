@@ -34,6 +34,12 @@ Interactive mode
 anime-dl
 ```
 
+Show a chapter of a anime from url.
+
+``` bash
+anime-dl -u [url]
+```
+
 Show a chapter of a anime. Example of title: dragon-ball
 
 ``` bash
@@ -49,5 +55,11 @@ anime-dl -c [number] -t [title-anime] -v
 Download a chapter of a anime. Example of title: dragon-ball. Require wget
 
 ``` bash
-anime-dl -c [number] -t [title-anime] -f video.mp4
+anime-dl -c [number] -t [title-anime] -f [filename]
+```
+
+Download a chapter from url. Require wget
+
+``` bash
+anime-dl -u [url] -f [filename]
 ```
