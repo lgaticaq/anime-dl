@@ -23,6 +23,7 @@ yargs = require("yargs")
   .alias("m", "mplayer").describe("m", "Autoplay in mplayer").boolean("m")
   .alias("o", "omx").describe("o", "Autoplay in omxplayer").boolean("o")
   .alias("f", "file").describe("f", "Download to file")
+  .alias("u", "url").describe("f", "Download from url")
   .version(version, "version").alias("version", "V")
   .help("help").alias("help", "h")
 
@@ -46,8 +47,8 @@ searchAnime = (search, cb) ->
     else
       cb err, null
 
-getUrlVideo = (animeUrl, chapter, cb) ->
-  urllib.request "#{animeUrl}#{chapter}",
+getUrlVideo = (animeUrl, cb) ->
+  urllib.request "#{animeUrl}",
     method: "GET"
   , (err, data, response) ->
     if not err and response.statusCode is 200
@@ -91,14 +92,17 @@ download = (url, file) ->
     detached: true
     stdio: "ignore"
 
-if yargs.argv.t and yargs.argv.c
-  animeUrl = "#{url}#{yargs.argv.title}/"
+if yargs.argv.u or (yargs.argv.t and yargs.argv.c)
+  if yargs.argv.u
+    animeUrl = yargs.argv.u
+  else
+    animeUrl = "#{url}#{yargs.argv.t}/yargs.argv.c"
   player = "mpv"
   player = "mpv" if yargs.argv.k
   player = "mplayer" if yargs.argv.m
   player = "vlc" if yargs.argv.v
   player = "omxplayer" if yargs.argv.o
-  getUrlVideo animeUrl, yargs.argv.chapter, (err, url) ->
+  getUrlVideo animeUrl, (err, url) ->
     if err
       console.log "An error has occurred :("
       process.exit 1
