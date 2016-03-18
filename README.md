@@ -35,7 +35,7 @@ anime.searchAnime(keyword).then(console.log);
 }*/
 
 const uri = 'http://jkanime.net/one-piece/732/';
-anime.searchAnime(uri).then(console.log);
+anime.getUrlVideo(uri).then(console.log);
 /*[
   { url: 'http://jkanime.net/one-piece/', name: 'One Piece' },
   { url: 'http://jkanime.net/one-piece-taose-kaizoku-ganzack/', name: 'One Piece: Taose! Kaizoku Ganzack' },
