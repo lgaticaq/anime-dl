@@ -33,7 +33,6 @@ anime.searchAnime(keyword).then(console.log);
     'http://jkanime.net/stream/jkmedia/83b83090f08cbe7823cb0ed531f8cc72/ea38fc252cc488c0c1149875b8694f87/1/1de4451f8844a9c171830d25ff1cebbb/'
   ]
 }*/
-```
 
 const uri = 'http://jkanime.net/one-piece/732/';
 anime.searchAnime(uri).then(console.log);
