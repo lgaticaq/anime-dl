@@ -2,25 +2,9 @@
 
 import rp from 'request-promise';
 import cheerio from 'cheerio';
+import querystring from 'querystring';
 
-const searchAnime = (keyword) => {
-  const options = {
-    uri: `http://jkanime.net/buscar/${keyword}`,
-    transform: cheerio.load,
-    headers: {'User-Agent': 'anime-dl'}
-  };
-  return rp(options)
-    .then($ => {
-      return $('.listpage .titl').map(function() {
-        return {
-          url: $(this).attr('href'),
-          name: $(this).text()
-        };
-      }).get();
-    });
-};
-
-const getUrlVideo = (uri) => {
+const getLinksByUrl = (uri) => {
   const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
   const options = {
     uri: uri,
@@ -40,7 +24,65 @@ const getUrlVideo = (uri) => {
     });
 };
 
+const getLastChapter = (name) => {
+  const options = {
+    uri: `http://jkanime.net/${name}`,
+    transform: cheerio.load,
+    headers: {'User-Agent': 'anime-dl'}
+  };
+  return rp(options)
+    .then($ => {
+      const text = $('.listnavi a').last().text();
+      return parseInt(/\d+\s-\s(\d+)/.exec(text)[1], 10);
+    });
+};
+
+const searchAnime = (keyword) => {
+  const options = {
+    uri: `http://jkanime.net/buscar/${querystring.escape(keyword)}`,
+    transform: cheerio.load,
+    headers: {'User-Agent': 'anime-dl'}
+  };
+  return rp(options)
+    .then($ => {
+      return $('.listpage .titl').map(function() {
+        return {
+          codeName: /http:\/\/jkanime\.net\/([\w\d-_]+)\//.exec($(this).attr('href'))[1],
+          name: $(this).text()
+        };
+      }).get();
+    });
+};
+
+const getName = (keyword) => {
+  keyword = keyword.trim();
+  return searchAnime(keyword).then(animes => {
+    const data = animes.find(x => x.name.toLowerCase() === keyword.toLowerCase());
+    if (typeof data === 'undefined') throw new Error(`Not found anime with keyword "${keyword}"`);
+    return data.codeName;
+  });
+};
+
+const makeUrl = (keyword, chapter) => {
+  let _name;
+  return getName(keyword).then(name => {
+    _name = name;
+    return getLastChapter(name);
+  }).then(last => {
+    if (!/\d+/.test(chapter)) throw new Error('Not a valid chapter');
+    chapter = parseInt(chapter, 10);
+    if (chapter > last) throw new Error(`Only chapters from 1 to ${last}`);
+    return `http://jkanime.net/${_name}/${chapter}`;
+  });
+};
+
+const getLinksByNameAndChapter = (name, chapter) => {
+  return makeUrl(name, chapter).then(getLinksByUrl);
+};
+
 module.exports = {
   searchAnime: searchAnime,
-  getUrlVideo: getUrlVideo
+  makeUrl: makeUrl,
+  getLinksByUrl: getLinksByUrl,
+  getLinksByNameAndChapter: getLinksByNameAndChapter
 };
