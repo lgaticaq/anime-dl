@@ -1,4 +1,5 @@
 const anime = require('anime-dl');
 
-const uri = 'http://jkanime.net/one-piece/732/';
-const data = await anime.getUrlVideo(uri);
+const name = 'one piece';
+const chapter = 732;
+const data = await anime.getLinksByNameAndChapter(name, chapter);
