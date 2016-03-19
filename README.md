@@ -21,25 +21,17 @@ npm i -S anime-dl
 ```js
 import anime from 'anime-dl'
 
-const codeName = 'one piece';
-const chapter = 732;
+const name: 'one piece';
+const chapter = '732',
 anime.getLinksByNameAndChapter(name, chapter).then(console.log);
-/*
-{
+/*{
   title: 'One Piece',
   codeName: 'one-piece',
   chapter: '732',
   urls: [
-    { url: 'http://jkanime.net/one-piece/', name: 'One Piece' },
-    { url: 'http://jkanime.net/one-piece-taose-kaizoku-ganzack/', name: 'One Piece: Taose! Kaizoku Ganzack' },
-    { url: 'http://jkanime.net/one-piece-romance-dawn/', name: 'One Piece: Romance Dawn' },
-    { url: 'http://jkanime.net/one-piece-strong-world-episode-0/', name: 'One Piece: Strong World Episode 0' },
-    { url: 'http://jkanime.net/one-piece-recap/', name: 'One Piece Recap' },
-    { url: 'http://jkanime.net/one-piece-episode-of-nami/', name: 'One Piece: Episode of Nami' },
-    { url: 'http://jkanime.net/one-piece-episode-of-luffy-hand-island-no-bouken/', name: 'One Piece: Episode of Luffy - Hand Island no Bouken' },
-    { url: 'http://jkanime.net/dream-9-toriko-one-piece-dragon-ball-z-super-collaboration-special/', name: 'Toriko & One Piece & Dragon Ball Z Super Collaboration' },
-    { url: 'http://jkanime.net/one-piece-film-z/', name: 'One Piece Film Z' },
-    { url: 'http://jkanime.net/one-piece-special-glorious-island/', name: 'One Piece Special: Glorious Island' }
+    'http://jkanime.net/stream/jkmedia/83b83090f08cbe7823cb0ed531f8cc72/0f40333b749a2a6d1bc5706accd73329/1/1de4451f8844a9c171830d25ff1cebbb/',
+    'http://jkanime.net/stream/jkmedia/83b83090f08cbe7823cb0ed531f8cc72/4f501d26373b56e0fe0351c1a6154bd4/1/1de4451f8844a9c171830d25ff1cebbb/',
+    'http://jkanime.net/stream/jkmedia/83b83090f08cbe7823cb0ed531f8cc72/ea38fc252cc488c0c1149875b8694f87/1/1de4451f8844a9c171830d25ff1cebbb/'
   ]
 }*/
 ```
