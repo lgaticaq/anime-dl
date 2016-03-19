@@ -7,7 +7,7 @@
     "prepublish": "npm run build -s",
     "prebuild": "npm run lint -s && npm run clean -s",
     "build": "babel src --out-dir lib --source-maps",
-    "lint": "eslint src",
+    "lint": "eslint src && eslint test",
     "clean": "rimraf lib",
     "pretest": "npm run build -s",
     "test": "mocha --compilers js:babel-core/register"
@@ -39,6 +39,7 @@
     "chai": "^3.5.0",
     "eslint": "2.4.0",
     "mocha": "^2.4.5",
+    "nock": "^7.2.2",
     "rimraf": "^2.5.2"
   },
   "eslintConfig": {
