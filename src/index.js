@@ -57,9 +57,8 @@ const searchAnime = (keyword) => {
 const getName = (keyword) => {
   keyword = keyword.trim();
   return searchAnime(keyword).then(animes => {
-    const data = animes.find(x => x.name.toLowerCase() === keyword.toLowerCase());
-    if (typeof data === 'undefined') throw new Error(`Not found anime with keyword "${keyword}"`);
-    return data.codeName;
+    if (animes.length === 0) throw new Error(`Not found anime with keyword "${keyword}"`);
+    return animes[0].codeName;
   });
 };
 
