@@ -4,12 +4,14 @@ import rp from 'request-promise';
 import cheerio from 'cheerio';
 import querystring from 'querystring';
 
+const userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
+
 const getLinksByUrl = (uri) => {
   const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
   const options = {
     uri: uri,
     transform: cheerio.load,
-    headers: {'User-Agent': 'anime-dl'}
+    headers: {'User-Agent': userAgent}
   };
   return rp(options)
     .then($ => {
@@ -28,7 +30,7 @@ const getLastChapter = (name) => {
   const options = {
     uri: `http://jkanime.net/${name}`,
     transform: cheerio.load,
-    headers: {'User-Agent': 'anime-dl'}
+    headers: {'User-Agent': userAgent}
   };
   return rp(options)
     .then($ => {
@@ -41,7 +43,7 @@ const searchAnime = (keyword) => {
   const options = {
     uri: `http://jkanime.net/buscar/${querystring.escape(keyword)}`,
     transform: cheerio.load,
-    headers: {'User-Agent': 'anime-dl'}
+    headers: {'User-Agent': userAgent}
   };
   return rp(options)
     .then($ => {
