@@ -1,7 +1,7 @@
 {
   "name": "anime-dl",
   "version": "2.0.2",
-  "description": "CLI for show and download anime from jkanime.net.",
+  "description": "Search and get anime video url",
   "main": "lib",
   "scripts": {
     "prepublish": "npm run build -s",
