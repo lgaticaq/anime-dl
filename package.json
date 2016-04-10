@@ -30,7 +30,7 @@
   "homepage": "https://github.com/lgaticaq/anime-dl#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "request-promise": "^2.0.1"
+    "cloudscraper": "^1.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
