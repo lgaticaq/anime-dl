@@ -1,59 +1,73 @@
 'use strict';
 
-import rp from 'request-promise';
 import cheerio from 'cheerio';
+import cloudscraper from 'cloudscraper';
 import querystring from 'querystring';
 
 const userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
 
 const getLinksByUrl = (uri) => {
-  const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
-  const options = {
-    uri: uri,
-    transform: cheerio.load,
-    headers: {'User-Agent': userAgent}
-  };
-  return rp(options)
-    .then($ => {
-      if (!validRegex.test(uri)) return null;
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'GET',
+      url: uri,
+      headers: {'User-Agent': userAgent}
+    };
+    cloudscraper.request(options, (err, response, body) => {
+      if (err) reject(err);
+      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      const $ = cheerio.load(body);
+      const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
+      if (!validRegex.test(uri)) resolve(null);
       const title = $('.vervideo').text().split(' - ')[0];
       const [codeName, chapter] = validRegex.exec(uri).slice(1, 3);
       const regex = /https:\/\/jkanime\.net\/jk\.php\?u=stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/1\/[0-9a-f]{32})\//;
       const urls = $('.player_conte').map(function() {
         return $(this).attr('src');
       }).get().filter(x => regex.test(x)).map(x => `http://jkanime.net/stream/jkmedia/${regex.exec(x)[1]}/`);
-      return {title: title, codeName: codeName, chapter: chapter, urls: urls};
+      resolve({title: title, codeName: codeName, chapter: chapter, urls: urls});
     });
+  });
 };
 
 const getLastChapter = (name) => {
-  const options = {
-    uri: `http://jkanime.net/${name}`,
-    transform: cheerio.load,
-    headers: {'User-Agent': userAgent}
-  };
-  return rp(options)
-    .then($ => {
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'GET',
+      url: `http://jkanime.net/${name}`,
+      headers: {'User-Agent': userAgent}
+    };
+    cloudscraper.request(options, (err, response, body) => {
+      if (err) reject(err);
+      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      const $ = cheerio.load(body);
       const text = $('.listnavi a').last().text();
-      return parseInt(/\d+\s-\s(\d+)/.exec(text)[1], 10);
+      const result = parseInt(/\d+\s-\s(\d+)/.exec(text)[1], 10);
+      resolve(result);
     });
+  });
 };
 
 const searchAnime = (keyword) => {
-  const options = {
-    uri: `http://jkanime.net/buscar/${querystring.escape(keyword)}`,
-    transform: cheerio.load,
-    headers: {'User-Agent': userAgent}
-  };
-  return rp(options)
-    .then($ => {
-      return $('.listpage .titl').map(function() {
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'GET',
+      url: `http://jkanime.net/buscar/${querystring.escape(keyword)}`,
+      headers: {'User-Agent': userAgent}
+    };
+    cloudscraper.request(options, (err, response, body) => {
+      if (err) reject(err);
+      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      const $ = cheerio.load(body);
+      const result = $('.listpage .titl').map(function() {
         return {
-          codeName: /http:\/\/jkanime\.net\/([\w\d-_]+)\//.exec($(this).attr('href'))[1],
+          codeName: /http:\/\/jkanime\.net\/([\w\d_-]+)\//.exec($(this).attr('href'))[1],
           name: $(this).text()
         };
       }).get();
+      resolve(result);
     });
+  });
 };
 
 const getName = (keyword) => {
