@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/anime-dl.svg?style=flat-square)](https://www.npmjs.com/package/anime-dl)
 [![npm downloads](https://img.shields.io/npm/dm/anime-dl.svg?style=flat-square)](https://www.npmjs.com/package/anime-dl)
 [![Build Status](https://img.shields.io/travis/lgaticaq/anime-dl.svg?style=flat-square)](https://travis-ci.org/lgaticaq/anime-dl)
+[![Coverage Status](https://img.shields.io/coveralls/lgaticaq/anime-dl/master.svg?style=flat-square)](https://coveralls.io/github/lgaticaq/anime-dl?branch=master)
 [![dependency Status](https://img.shields.io/david/lgaticaq/anime-dl.svg?style=flat-square)](https://david-dm.org/lgaticaq/anime-dl#info=dependencies)
 [![devDependency Status](https://img.shields.io/david/dev/lgaticaq/anime-dl.svg?style=flat-square)](https://david-dm.org/lgaticaq/anime-dl#info=devDependencies)
 [![Join the chat at https://gitter.im/lgaticaq/anime-dl](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/lgaticaq/anime-dl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -19,7 +20,7 @@ npm i -S anime-dl
 
 [Try on Tonic](https://tonicdev.com/npm/anime-dl)
 ```js
-import anime from 'anime-dl'
+import anime from 'anime-dl';
 
 const name: 'one piece';
 const chapter = '732',

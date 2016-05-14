@@ -1,9 +1,9 @@
 'use strict';
 
-import anime from '../src';
-import {expect} from 'chai';
-import path from 'path';
-import nock from 'nock';
+const anime = require('../src');
+const expect = require('chai').expect;
+const path = require('path');
+const nock = require('nock');
 
 describe('anime-dl', function() {
   this.timeout(20000);

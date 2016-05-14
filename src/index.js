@@ -1,12 +1,12 @@
 'use strict';
 
-import cheerio from 'cheerio';
-import cloudscraper from 'cloudscraper';
-import querystring from 'querystring';
+const cheerio = require('cheerio');
+const cloudscraper = require('cloudscraper');
+const querystring = require('querystring');
 
 const userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
 
-const getLinksByUrl = (uri) => {
+const getLinksByUrl = uri => {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'GET',
@@ -20,7 +20,9 @@ const getLinksByUrl = (uri) => {
       const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
       if (!validRegex.test(uri)) resolve(null);
       const title = $('.vervideo').text().split(' - ')[0];
-      const [codeName, chapter] = validRegex.exec(uri).slice(1, 3);
+      const _exec = validRegex.exec(uri).slice(1, 3);
+      const codeName = _exec[0];
+      const chapter = _exec[1];
       const regex = /https:\/\/jkanime\.net\/jk\.php\?u=stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/1\/[0-9a-f]{32})\//;
       const urls = $('.player_conte').map(function() {
         return $(this).attr('src');
@@ -30,7 +32,7 @@ const getLinksByUrl = (uri) => {
   });
 };
 
-const getLastChapter = (name) => {
+const getLastChapter = name => {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'GET',
@@ -48,7 +50,7 @@ const getLastChapter = (name) => {
   });
 };
 
-const searchAnime = (keyword) => {
+const searchAnime = keyword => {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'GET',
@@ -70,7 +72,7 @@ const searchAnime = (keyword) => {
   });
 };
 
-const getName = (keyword) => {
+const getName = keyword => {
   keyword = keyword.trim();
   return searchAnime(keyword).then(animes => {
     if (animes.length === 0) throw new Error(`Not found anime with keyword "${keyword}"`);
