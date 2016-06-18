@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/lgaticaq/anime-dl#readme",
   "dependencies": {
-    "cheerio": "^0.21.0",
+    "cheerio": "^0.20.0",
     "cloudscraper": "^1.2.2"
   },
   "devDependencies": {
