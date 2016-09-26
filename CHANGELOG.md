@@ -1,3 +1,24 @@
+### 3.1.0 (2016-9-26)
+
+##### Chores
+
+* **package:**
+  * Update dependencies, add codeclimate and generate-changelog ([c7de5580](https://github.com/lgaticaq/anime-dl/commit/c7de55801a4122e8f76c9edeed0c9de05915f673))
+  * update cheerio to version 0.22.0 ([70f7dd36](https://github.com/lgaticaq/anime-dl/commit/70f7dd36a5a521fa829fe2e2d692ea02a395be7d))
+  * update mocha to version 3.0.0 ([285a6d61](https://github.com/lgaticaq/anime-dl/commit/285a6d61588b088dfee369e2d8f621770f537e63))
+  * update eslint to version 3.0.1 ([9adcd687](https://github.com/lgaticaq/anime-dl/commit/9adcd6872bb38bba6ac1ecb3e5aeb6ed3425c0ca))
+  * update eslint to version 2.13.0 ([5e255bcd](https://github.com/lgaticaq/anime-dl/commit/5e255bcd0ad80536744f299fff1fdf4a0f930af3))
+  * update cheerio to version 0.21.0 ([47a52e7d](https://github.com/lgaticaq/anime-dl/commit/47a52e7dd2ab85442993572151b3673e921dccbc))
+  * update mocha to version 2.5.0 ([5fb5b188](https://github.com/lgaticaq/anime-dl/commit/5fb5b188acbed69b4ffbd8b54a8a766fc36b1610))
+
+##### New Features
+
+* **search:** Add fuse search for better results ([2546be97](https://github.com/lgaticaq/anime-dl/commit/2546be97aad03d47118e87785483009290f9514c))
+
+##### Bug Fixes
+
+* **package:** Downgrade cheerio to v0.20.0 ([94d2e481](https://github.com/lgaticaq/anime-dl/commit/94d2e4811cdaa6167822b46bc5907a2b83b9a7c9))
+
 ## 3.0.0 (2016-05-14)
 
 * Refactor ([f02b959](https://github.com/lgaticaq/anime-dl/commit/f02b959))
