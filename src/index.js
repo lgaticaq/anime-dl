@@ -3,6 +3,7 @@
 const cheerio = require('cheerio');
 const cloudscraper = require('cloudscraper');
 const querystring = require('querystring');
+const Fuse = require('fuse.js');
 
 const userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
 
@@ -72,11 +73,25 @@ const searchAnime = keyword => {
   });
 };
 
+const fuseSearch = (data, keyword) => {
+  const options = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    keys: ['name']
+  };
+  const fuse = new Fuse(data, options);
+  return fuse.search(keyword);
+};
+
 const getName = keyword => {
   keyword = keyword.trim();
   return searchAnime(keyword).then(animes => {
     if (animes.length === 0) throw new Error(`Not found anime with keyword "${keyword}"`);
-    return animes[0].codeName;
+    const results = fuseSearch(animes, keyword);
+    return results[0].codeName;
   });
 };
 

@@ -30,15 +30,15 @@ describe('anime-dl', function() {
     beforeEach(() => {
       nock.disableNetConnect();
       nock('http://jkanime.net')
-        .get('/buscar/one%20piece')
+        .get('/buscar/psycho%20pass')
         .replyWithFile(200, path.join(__dirname, 'found.html'));
       nock('http://jkanime.net')
-        .get('/one-piece')
+        .get('/psycho-pass')
         .replyWithFile(200, path.join(__dirname, 'chapters.html'));
     });
 
     it('should return a error for invalid chapter', done => {
-      const name = 'one piece';
+      const name = 'psycho pass';
       const chapter = 'asdf';
       anime.getLinksByNameAndChapter(name, chapter).catch(err => {
         expect(err.message).to.eql('Not a valid chapter');
@@ -47,7 +47,7 @@ describe('anime-dl', function() {
     });
 
     it('should return a error for chapter outside in range', done => {
-      const name = 'one piece';
+      const name = 'psycho pass';
       const chapter = 100000;
       anime.getLinksByNameAndChapter(name, chapter).catch(err => {
         expect(err.message).to.match(/Only\ chapters\ from\ 1\ to\ /);
@@ -60,30 +60,53 @@ describe('anime-dl', function() {
     beforeEach(() => {
       nock.disableNetConnect();
       nock('http://jkanime.net')
-        .get('/buscar/one%20piece')
+        .get('/buscar/psycho%20pass')
         .replyWithFile(200, path.join(__dirname, 'found.html'));
       nock('http://jkanime.net')
-        .get('/one-piece')
+        .get('/psycho-pass')
         .replyWithFile(200, path.join(__dirname, 'chapters.html'));
       nock('http://jkanime.net')
-        .get('/one-piece/100')
+        .get('/psycho-pass/10')
         .replyWithFile(200, path.join(__dirname, 'chapter.html'));
     });
 
     it('should return valid data of a chapter of a anime', done => {
-      const name = 'one piece';
-      const chapter = 100;
+      const name = 'psycho pass';
+      const chapter = 10;
       anime.getLinksByNameAndChapter(name, chapter).then(data => {
-        expect(data.title).to.eql('One Piece');
-        expect(data.codeName).to.eql('one-piece');
-        expect(data.chapter).to.eql('100');
+        expect(data.title).to.eql('Psycho-Pass');
+        expect(data.codeName).to.eql('psycho-pass');
+        expect(data.chapter).to.eql('10');
         expect(data.urls[0]).to.match(/http:\/\/jkanime\.net\/stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/1\/[0-9a-f]{32})\//);
         done();
-      }).catch(err => {
-        if (err) throw err;
-        expect(err).to.be.undefined;
+      }).catch(err => done(err));
+    });
+  });
+
+  describe('valid anime and chapter fuse search', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithFile(200, path.join(__dirname, 'chapters.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .replyWithFile(200, path.join(__dirname, 'chapter2.html'));
+    });
+
+    it('should return valid data of a chapter of a anime', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).then(data => {
+        expect(data.title).to.eql('Mob Psycho 100');
+        expect(data.codeName).to.eql('mob-psycho-100');
+        expect(data.chapter).to.eql('1');
+        expect(data.urls[0]).to.match(/http:\/\/jkanime\.net\/stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/1\/[0-9a-f]{32})\//);
         done();
-      });
+      }).catch(err => done(err));
     });
   });
 });
