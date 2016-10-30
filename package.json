@@ -30,7 +30,7 @@
   "homepage": "https://github.com/lgaticaq/anime-dl#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "cloudscraper": "^1.4.0",
+    "cloudscraper": "^1.4.1",
     "fuse.js": "^2.5.0"
   },
   "devDependencies": {
