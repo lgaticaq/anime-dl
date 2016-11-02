@@ -1,3 +1,19 @@
+## 4.0.0 (2016-11-2)
+
+##### Chores
+
+* **package:**
+  * Update dependencies ([a3de4d8d](https://github.com/lgaticaq/anime-dl/commit/a3de4d8d37b7775c8ddda618badc11cd1c8d31d7))
+  * update cloudscraper to version 1.4.1 ([d9f49cb5](https://github.com/lgaticaq/anime-dl/commit/d9f49cb50142d97524c78c261179c0ad3387e374))
+  * update nock to version 9.0.2 ([c33ca764](https://github.com/lgaticaq/anime-dl/commit/c33ca76493c9c967893659aa044694299d44adc1))
+  * update eslint to version 3.8.1 ([12dfb9d9](https://github.com/lgaticaq/anime-dl/commit/12dfb9d9bbfd854c58b17614a694cb944d17da93))
+  * update eslint to version 3.8.0 ([e6c05f37](https://github.com/lgaticaq/anime-dl/commit/e6c05f371d8a57efa67821b938d4230bdd195db7))
+  * update eslint to version 3.7.1 ([f8a43e0b](https://github.com/lgaticaq/anime-dl/commit/f8a43e0bd32fb85b115c6fc098417e714b5470e2))
+  * update codeclimate-test-reporter to version 0.4.0 ([00fb6e2f](https://github.com/lgaticaq/anime-dl/commit/00fb6e2fffa46e5f5b3c7aa6c2273e771215bd1a))
+  * update eslint to version 3.7.0 ([59e78c6e](https://github.com/lgaticaq/anime-dl/commit/59e78c6eed6cc8541411319b450fa4b461ab5134))
+  * update eslint to version 3.6.1 ([573cdaad](https://github.com/lgaticaq/anime-dl/commit/573cdaad4a7a4d4bdc221529c8d946f7a9a47ea0))
+* **node:** Add node v7 ([225354ca](https://github.com/lgaticaq/anime-dl/commit/225354caa102b00dedddf4c8d8b1638dd210a6d4))
+
 ### 3.1.0 (2016-9-26)
 
 ##### Chores
