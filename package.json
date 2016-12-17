@@ -31,16 +31,16 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "cloudscraper": "^1.4.1",
-    "fuse.js": "^2.5.0"
+    "fuse.js": "^2.6.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "codeclimate-test-reporter": "^0.4.0",
-    "coveralls": "^2.11.14",
-    "eslint": "^3.9.1",
-    "generate-changelog": "^1.0.2",
+    "coveralls": "^2.11.15",
+    "eslint": "^3.12.2",
+    "generate-changelog": "^1.1.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
+    "mocha": "^3.2.0",
     "nock": "^9.0.2"
   },
   "eslintConfig": {
