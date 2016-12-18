@@ -109,4 +109,172 @@ describe('anime-dl', function() {
       }).catch(err => done(err));
     });
   });
+
+  describe('server error in get link', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithFile(200, path.join(__dirname, 'chapters.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .replyWithError('Server error');
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('bad status in get link', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithFile(200, path.join(__dirname, 'chapters.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .reply(301);
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('server error in get last chapter', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithError('Server error');
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .replyWithError('Server error');
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('bad status in get last chapter', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .reply(301);
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .reply(301);
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('server error in search', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithError('Server error');
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithError('Server error');
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .replyWithError('Server error');
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('bad status code in search', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .reply(301);
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .reply(301);
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .reply(301);
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
+
+  describe('error in search name', () => {
+    beforeEach(() => {
+      nock.disableNetConnect();
+      nock('http://jkanime.net')
+        .get('/buscar/mob%20psycho%20100')
+        .replyWithFile(200, path.join(__dirname, 'found_invalid.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100')
+        .replyWithFile(200, path.join(__dirname, 'chapters.html'));
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1')
+        .replyWithFile(200, path.join(__dirname, 'chapter2.html'));
+    });
+
+    it('should return an error', done => {
+      const name = 'mob psycho 100';
+      const chapter = 1;
+      anime.getLinksByNameAndChapter(name, chapter).catch(err => {
+        expect(err).to.be.an('error');
+        done();
+      });
+    });
+  });
 });
