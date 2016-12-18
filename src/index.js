@@ -15,11 +15,10 @@ const getLinksByUrl = uri => {
       headers: {'User-Agent': userAgent}
     };
     cloudscraper.request(options, (err, response, body) => {
-      if (err) reject(err);
-      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      if (err) return reject(err.error);
+      if (response.statusCode !== 200) return reject(new Error(`Status code: ${response.statusCode}`));
       const $ = cheerio.load(body);
       const validRegex = /http:\/\/jkanime\.net\/([\w\d-_]+)\/(\d+)/;
-      if (!validRegex.test(uri)) resolve(null);
       const title = $('.vervideo').text().split(' - ')[0];
       const _exec = validRegex.exec(uri).slice(1, 3);
       const codeName = _exec[0];
@@ -41,8 +40,8 @@ const getLastChapter = name => {
       headers: {'User-Agent': userAgent}
     };
     cloudscraper.request(options, (err, response, body) => {
-      if (err) reject(err);
-      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      if (err) return reject(err.error);
+      if (response.statusCode !== 200) return reject(new Error(`Status code: ${response.statusCode}`));
       const $ = cheerio.load(body);
       const text = $('.listnavi a').last().text();
       const result = parseInt(/\d+\s-\s(\d+)/.exec(text)[1], 10);
@@ -59,8 +58,8 @@ const searchAnime = keyword => {
       headers: {'User-Agent': userAgent}
     };
     cloudscraper.request(options, (err, response, body) => {
-      if (err) reject(err);
-      if (response.statusCode !== 200) reject(new Error(`Status code: ${response.statusCode}`));
+      if (err) return reject(err.error);
+      if (response.statusCode !== 200) return reject(new Error(`Status code: ${response.statusCode}`));
       const $ = cheerio.load(body);
       const result = $('.listpage .titl').map(function() {
         return {
@@ -91,6 +90,7 @@ const getName = keyword => {
   return searchAnime(keyword).then(animes => {
     if (animes.length === 0) throw new Error(`Not found anime with keyword "${keyword}"`);
     const results = fuseSearch(animes, keyword);
+    if (results.length === 0) throw new Error('Not found');
     return results[0].codeName;
   });
 };
