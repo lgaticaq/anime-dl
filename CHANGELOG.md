@@ -1,3 +1,15 @@
+#### 4.0.2 (2016-12-17)
+
+##### Chores
+
+* **tests:** Add all tests ([fa299e41](https://github.com/lgaticaq/anime-dl/commit/fa299e41dd50959e67583f26c2473438fecdba0f))
+* **npm:** Update ignore ([76e8579c](https://github.com/lgaticaq/anime-dl/commit/76e8579c70c65af6731748e1f069155bd1e74680))
+* **package:** Update dependencies ([4447eb95](https://github.com/lgaticaq/anime-dl/commit/4447eb9572a3e98417e79809ddc183390235499e))
+
+##### Bug Fixes
+
+* **src:** Fix reject errors ([82a72581](https://github.com/lgaticaq/anime-dl/commit/82a72581ec4b07dbc598b221bf161946f616537c))
+
 #### 4.0.1 (2016-11-2)
 
 ## 4.0.0 (2016-11-2)
