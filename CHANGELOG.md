@@ -1,3 +1,19 @@
+#### 4.0.3 (2017-3-26)
+
+##### Chores
+
+* **package:**
+  * Upgrade nock to version 9.0.9 ([33c45a4b](https://github.com/lgaticaq/anime-dl/commit/33c45a4b86bc7f9da28ce53e73b5054434eb7855))
+  * Upgrade eslint to version 3.18.0 ([33b9c7af](https://github.com/lgaticaq/anime-dl/commit/33b9c7af8c57a5e453c7d539f3038250722542d1))
+  * Upgrade coveralls to version 2.12.0 ([0398f61c](https://github.com/lgaticaq/anime-dl/commit/0398f61c560f168357c4bde152ba3550b0577780))
+  * Upgrade codeclimate-test-reporter to version 0.4.1 ([0cb5e2f5](https://github.com/lgaticaq/anime-dl/commit/0cb5e2f5bf7f18100ae974e242e2a98afd2d482f))
+  * Upgrade fuse.js to version 2.6.2 ([a84c6cda](https://github.com/lgaticaq/anime-dl/commit/a84c6cda7a7294eb8e5fe0da0b719cbe9e1d9e46))
+  * Update eslint to v3.14.1 ([3ee96d6b](https://github.com/lgaticaq/anime-dl/commit/3ee96d6b01b73861821e035f78b4271e7d219d5f))
+
+##### Documentation Changes
+
+* **LICENSE:** Update year ([52a9fd9a](https://github.com/lgaticaq/anime-dl/commit/52a9fd9ae8ba7a9c61a0b8440e16191155a0e7fc))
+
 #### 4.0.2 (2016-12-17)
 
 ##### Chores
