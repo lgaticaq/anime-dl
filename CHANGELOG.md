@@ -152,6 +152,5 @@
 
 ## 1.0.0 (2015-01-02)
 
-* Add TODO ([8ac9752](https://github.com/lgaticaq/anime-dl/commit/8ac9752))
 * Add v1 ([e4e1d6a](https://github.com/lgaticaq/anime-dl/commit/e4e1d6a))
 * Initial commit ([8753185](https://github.com/lgaticaq/anime-dl/commit/8753185))
