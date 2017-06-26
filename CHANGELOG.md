@@ -1,3 +1,30 @@
+#### 4.0.4 (2017-06-26)
+
+##### Chores
+
+* **package:**
+  * update dependencies ([3fc216c3](https://github.com/lgaticaq/anime-dl/commit/3fc216c377fc321353b957e58b7aac92e5ca838b))
+  * update eslint to version 4.1.0 ([12d9b919](https://github.com/lgaticaq/anime-dl/commit/12d9b919775ade26cc2178c8abaa36ba00339db5))
+  * update chai to version 4.0.2 ([22fb1ee4](https://github.com/lgaticaq/anime-dl/commit/22fb1ee4a954edebea0002e01ced8bc3289d9f34))
+  * Upgrade eslint to version 3.19.0 ([e9c16872](https://github.com/lgaticaq/anime-dl/commit/e9c168726c3a863e14eed8d8cce9db91628325fa))
+* **travis:** Add cache yarn ([1a9e1131](https://github.com/lgaticaq/anime-dl/commit/1a9e1131aae89bd9a3023113136709354c8d5c08))
+
+##### Documentation Changes
+
+* **CHANGELOG:** Remove TODO ([270c2103](https://github.com/lgaticaq/anime-dl/commit/270c2103e3cfdec9d60e50a63905857bb825a848))
+
+##### New Features
+
+* **package:**
+  * Upgrade nock to version 9.0.11 ([b246c11c](https://github.com/lgaticaq/anime-dl/commit/b246c11cd5a0fe0a8852020dc18a6128f958d19a))
+  * Upgrade coveralls to version 2.13.0 ([be1ea01f](https://github.com/lgaticaq/anime-dl/commit/be1ea01f8e2916ef888d68070e0c8e84e9f2ab2f))
+
+##### Bug Fixes
+
+* **package:**
+  * update cheerio to version 1.0.0-rc.1 ([0444ded9](https://github.com/lgaticaq/anime-dl/commit/0444ded9df690aee1485423cce0e9fb59ae08418))
+  * update fuse.js to version 3.0.0 ([7513056a](https://github.com/lgaticaq/anime-dl/commit/7513056ae5892c19783d6c124874db5ce550ede4))
+
 #### 4.0.3 (2017-3-26)
 
 ##### Chores
