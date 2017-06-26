@@ -20,11 +20,11 @@ npm i -S anime-dl
 
 [Try on Tonic](https://tonicdev.com/npm/anime-dl)
 ```js
-import anime from 'anime-dl';
+const anime = require('anime-dl')
 
-const name: 'one piece';
-const chapter = '732',
-anime.getLinksByNameAndChapter(name, chapter).then(console.log);
+const name: 'one piece'
+const chapter = '732'
+anime.getLinksByNameAndChapter(name, chapter).then(console.log)
 /*{
   title: 'One Piece',
   codeName: 'one-piece',
