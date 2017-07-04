@@ -1,3 +1,15 @@
+#### 4.0.5 (2017-07-04)
+
+##### Chores
+
+* **package:**
+  * update dependencies ([f2f3e613](https://github.com/lgaticaq/anime-dl/commit/f2f3e613467d398a2c13180b81c6915143195e44))
+  * update prettier-standard to version 6.0.0 ([b7041f26](https://github.com/lgaticaq/anime-dl/commit/b7041f269f368a19e37767d1b179f0c79d95b9ff))
+
+##### Bug Fixes
+
+* **regex:** fix filter regex ([614fd228](https://github.com/lgaticaq/anime-dl/commit/614fd22831b9e8da1d9da1e3eb265dbbbbf9c5c2))
+
 #### 4.0.4 (2017-06-26)
 
 ##### Chores
