@@ -49,7 +49,7 @@ const getLinksByUrl = uri => {
             const _exec = validRegex.exec(uri).slice(1, 3)
             const codeName = _exec[0]
             const chapter = _exec[1]
-            const regex = /https:\/\/jkanime\.net\/jk\.php\?u=stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/1\/[0-9a-f]{32})\//
+            const regex = /https:\/\/jkanime\.net\/jk\.php\?u=stream\/jkmedia\/([0-9a-f]{32}\/[0-9a-f]{32}\/\d+\/[0-9a-f]{32})\//
             const promises = $('.player_conte')
               .map(function () {
                 return $(this).attr('src')
