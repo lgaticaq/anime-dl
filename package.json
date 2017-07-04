@@ -1,6 +1,6 @@
 {
   "name": "anime-dl",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Search and get anime video url",
   "main": "src",
   "scripts": {
