@@ -1,6 +1,8 @@
 'use strict'
 
 const http = require('http')
+const https = require('https')
+const { URL } = require('url')
 const cheerio = require('cheerio')
 const querystring = require('querystring')
 const Fuse = require('fuse.js')
@@ -16,6 +18,34 @@ const requestOptions = uri => {
     path: uri,
     method: 'GET'
   }
+}
+
+const testLink = uri => {
+  return new Promise((resolve, reject) => {
+    const myURL = new URL(uri)
+    const options = {
+      headers: { 'User-Agent': userAgent },
+      hostname: myURL.hostname,
+      port: myURL.port,
+      path: myURL.pathname,
+      method: 'GET'
+    }
+    let request
+    if (myURL.protocol === 'https:') {
+      request = https.request
+    } else {
+      request = http.request
+    }
+    const req = request(options, res => {
+      if (res.statusCode !== 200) {
+        resolve(null)
+      } else {
+        resolve(uri)
+      }
+    })
+    req.on('error', () => resolve(null))
+    req.end()
+  })
 }
 
 const getOriginalLinks = uri => {
@@ -57,7 +87,9 @@ const getLinksByUrl = uri => {
               .get()
               .filter(x => regex.test(x))
               .map(x =>
-                getOriginalLinks(`/stream/jkmedia/${regex.exec(x)[1]}/`)
+                getOriginalLinks(`/stream/jkmedia/${regex.exec(x)[1]}/`).then(
+                  testLink
+                )
               )
             Promise.all(promises)
               .then(urls => {
@@ -65,7 +97,7 @@ const getLinksByUrl = uri => {
                   title: title,
                   codeName: codeName,
                   chapter: chapter,
-                  urls: urls
+                  urls: urls.filter(uri => uri !== null)
                 })
               })
               .catch(reject)

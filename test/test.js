@@ -82,6 +82,11 @@ describe('anime-dl', function () {
             }
           ]
         })
+      nock('https://www2.mp4upload.com:282')
+        .get(
+          '/d/rgx3762vz3b4quuoykue6jcwkwyu7xsrj57jctgg65tu5hmtf53xlbb4/video.mp4'
+        )
+        .reply(200)
     })
 
     it('should return valid data of a chapter of a anime', done => {
@@ -128,6 +133,11 @@ describe('anime-dl', function () {
             }
           ]
         })
+      nock('https://www2.mp4upload.com:282')
+        .get(
+          '/d/rgx3762vz3b4quuoykue6jcwkwyu7xsrj57jctgg65tu5hmtf53xlbb4/video.mp4'
+        )
+        .reply(200)
     })
 
     it('should return valid data of a chapter of a anime', done => {
