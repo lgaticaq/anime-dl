@@ -1,3 +1,13 @@
+#### 4.0.6 (2017-07-09)
+
+##### Chores
+
+* **package:** update dependencies ([1cddce88](https://github.com/lgaticaq/anime-dl/commit/1cddce8873ef94b431089ba2b17ec04f47cc8183))
+
+##### Bug Fixes
+
+* **url:** return only urls with 200 statusCode ([e0039d48](https://github.com/lgaticaq/anime-dl/commit/e0039d483e6e3e57c9d8941f6a062d383fc25bb4))
+
 #### 4.0.5 (2017-07-04)
 
 ##### Chores
