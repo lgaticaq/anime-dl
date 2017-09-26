@@ -2,7 +2,7 @@
 
 const http = require('http')
 const https = require('https')
-const { URL } = require('url')
+const url = require('url')
 const cheerio = require('cheerio')
 const querystring = require('querystring')
 const Fuse = require('fuse.js')
@@ -22,7 +22,7 @@ const requestOptions = uri => {
 
 const testLink = uri => {
   return new Promise((resolve, reject) => {
-    const myURL = new URL(uri)
+    const myURL = url.parse(uri)
     const options = {
       headers: { 'User-Agent': userAgent },
       hostname: myURL.hostname,
@@ -75,7 +75,9 @@ const getLinksByUrl = uri => {
           try {
             const $ = cheerio.load(rawData)
             const validRegex = /\/([\w\d-_]+)\/(\d+)/
-            const title = $('.vervideo').text().split(' - ')[0]
+            const title = $('.vervideo')
+              .text()
+              .split(' - ')[0]
             const _exec = validRegex.exec(uri).slice(1, 3)
             const codeName = _exec[0]
             const chapter = _exec[1]
@@ -127,7 +129,9 @@ const getLastChapter = name => {
         res.on('end', () => {
           try {
             const $ = cheerio.load(rawData)
-            const text = $('.listnavi a').last().text()
+            const text = $('.listnavi a')
+              .last()
+              .text()
             const result = parseInt(/\d+\s-\s(\d+)/.exec(text)[1], 10)
             resolve(result)
           } catch (err) {
