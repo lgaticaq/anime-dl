@@ -1,3 +1,22 @@
+#### 4.0.7 (2017-09-26)
+
+##### Chores
+
+* **renovate:** move renovate to package.json ([19bda4eb](https://github.com/lgaticaq/anime-dl/commit/19bda4eb2dda24302e72f46a2c586279c7c86834))
+* **eslint:** move eslint to package.json ([6bea2761](https://github.com/lgaticaq/anime-dl/commit/6bea27616d2eae2c133996c83ea30f25b34cc901))
+
+##### Bug Fixes
+
+* **url:** change url.URL to url.parse ([da4b859e](https://github.com/lgaticaq/anime-dl/commit/da4b859e2d457c8ebf3a00102aacd6778df2378d))
+
+##### Refactors
+
+* **deps:** renovate pin dependencies packages ([3fa758fa](https://github.com/lgaticaq/anime-dl/commit/3fa758faad3fc7617f91b25cbc4d481f7c565d47))
+
+##### Code Style Changes
+
+* **standard:** fix standard style ([f48908c0](https://github.com/lgaticaq/anime-dl/commit/f48908c0da29b06cb75e386010e4697310663371))
+
 #### 4.0.6 (2017-07-09)
 
 ##### Chores
