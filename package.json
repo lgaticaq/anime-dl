@@ -1,6 +1,6 @@
 {
   "name": "anime-dl",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Search and get anime video url",
   "main": "src",
   "scripts": {
@@ -84,6 +84,8 @@
   "tonicExampleFilename": "example.js",
   "renovate": {
     "automerge": "minor",
-    "extends": [":library"]
+    "extends": [
+      ":library"
+    ]
   }
 }
