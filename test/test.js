@@ -191,7 +191,9 @@ describe('anime-dl', function () {
       nock('http://jkanime.net')
         .get('/mob-psycho-100/')
         .replyWithFile(200, path.join(__dirname, 'chapters.html'))
-      nock('http://jkanime.net').get('/mob-psycho-100/1/').reply(301)
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1/')
+        .reply(301)
     })
 
     it('should return an error', done => {
@@ -234,8 +236,12 @@ describe('anime-dl', function () {
       nock('http://jkanime.net')
         .get('/buscar/mob_psycho_100/1/')
         .replyWithFile(200, path.join(__dirname, 'found.html'))
-      nock('http://jkanime.net').get('/mob-psycho-100/').reply(301)
-      nock('http://jkanime.net').get('/mob-psycho-100/1/').reply(301)
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/')
+        .reply(301)
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1/')
+        .reply(301)
     })
 
     it('should return an error', done => {
@@ -275,9 +281,15 @@ describe('anime-dl', function () {
   describe('bad status code in search', () => {
     beforeEach(() => {
       nock.disableNetConnect()
-      nock('http://jkanime.net').get('/buscar/mob_psycho_100/1/').reply(301)
-      nock('http://jkanime.net').get('/mob-psycho-100/').reply(301)
-      nock('http://jkanime.net').get('/mob-psycho-100/1/').reply(301)
+      nock('http://jkanime.net')
+        .get('/buscar/mob_psycho_100/1/')
+        .reply(301)
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/')
+        .reply(301)
+      nock('http://jkanime.net')
+        .get('/mob-psycho-100/1/')
+        .reply(301)
     })
 
     it('should return an error', done => {
@@ -348,7 +360,9 @@ describe('anime-dl', function () {
       '/stream/jkmedia/5b90b1cddd69bab5ebf007b1742fb9fd/4f501d26373b56e0fe0351c1a6154bd4/1/1de4451f8844a9c171830d25ff1cebbb/'
     beforeEach(() => {
       nock.disableNetConnect()
-      nock('http://jkanime.net').get(uri).replyWithError('Server error')
+      nock('http://jkanime.net')
+        .get(uri)
+        .replyWithError('Server error')
     })
 
     it('should return valid data of a chapter of a anime', done => {
