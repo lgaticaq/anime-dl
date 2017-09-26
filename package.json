@@ -81,5 +81,9 @@
       "git add"
     ]
   },
-  "tonicExampleFilename": "example.js"
+  "tonicExampleFilename": "example.js",
+  "renovate": {
+    "automerge": "minor",
+    "extends": [":library"]
+  }
 }
