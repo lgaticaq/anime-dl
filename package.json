@@ -65,6 +65,10 @@
       ]
     }
   },
+  "eslintIgnore": [
+    "coverage",
+    "example.js"
+  ],
   "lint-staged": {
     "src/**/*.js": [
       "eslint --fix",
