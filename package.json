@@ -47,7 +47,7 @@
     "lint-staged": "9.2.0",
     "mocha": "6.1.4",
     "nock": "10.0.6",
-    "prettier-standard": "9.1.1"
+    "prettier-standard": "12.0.2"
   },
   "eslintConfig": {
     "extends": "standard",
