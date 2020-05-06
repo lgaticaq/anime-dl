@@ -11,7 +11,9 @@
     "test": "istanbul cover _mocha",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags && npm publish",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags && npm publish"
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags && npm publish",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=6"
@@ -31,7 +33,8 @@
   "homepage": "https://github.com/lgaticaq/anime-dl#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "fuse.js": "^3.0.5"
+    "fuse.js": "^3.0.5",
+    "snyk": "^1.319.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
@@ -87,5 +90,6 @@
     "extends": [
       ":library"
     ]
-  }
+  },
+  "snyk": true
 }
